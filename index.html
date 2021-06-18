@@ -1,0 +1,30 @@
+<body>
+  <main></main>
+</body>
+
+
+<script>
+  async function getContent(){
+    
+    try{
+      const res = await fetch('http://localhost:4567/')
+      const json = await res.json();
+      
+      show(json);
+    }catch(e){
+      console.log(e)
+    }
+  }
+
+  getContent()
+
+  function show(users){
+    let output = '';
+
+    users.map(item => {
+      output += `<li>${item.name}</li>`
+    })
+
+    document.querySelector('main').innerHTML = output;
+  }
+</script>
